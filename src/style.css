@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;700&display=swap");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.app{
+    background: url("https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80");
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+main{
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.75));
+    padding: 25px;
+}
+
+.search-box{
+    width: 100%;
+    margin: 0 0 75px
+  }
+  .search-box .search-bar{
+    display: block;
+    width: 100%;
+    padding: 15px;
+  
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+  
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 0px 0px 16px 16px;
+    margin-top: -25px;
+  
+    box-shadow: 0px 5px rgba(0,0,0,0.2);
+    color: #313131;
+    font-size: 20px;
+    transition: 0.4s ease
+  }
+  .search-box .search-bar:focus {
+    background-color: rbga(255,255,255,0.75);
+  }
+  .card-group {
+      align-items: center;
+  }

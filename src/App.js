@@ -1,67 +1,70 @@
 import React, { useState, useEffect } from "react";
 import { ApiClient} from './ApiClient';
+import Views from './Views'
+import Navbar from 'react-bootstrap/Navbar'
+import Container from 'react-bootstrap/Container';
+import { ListGroup, Row, Col } from "react-bootstrap";
+import './style.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+//  import Script from './script.js'
+
+const cities = require('./small.json')
 
 function App() {
 
-  const responseStatusCheck = (responseObject) => {
-    if(responseObject.status >= 200 && responseObject.status < 300){
-      return Promise.resolve(responseObject);
+  const [weatherData, setWeatherData] = useState([]);
+  const [query, setQuery] = useState('')
 
-    }else{
-      return Promise.reject(new Error(responseObject.statusText));
+  const apiClient = new ApiClient();
+
+  const updateWeather = (name = 'Sheffield') => {
+    const city = cities.filter(([_name]) => _name == name)
+    if (!city || !city.length) {
+      // cry for help
+      return
     }
-  }
 
-  const [quotes, changeQuotes] = useState({
-    content: "",
-    author: "",
-    tags: [],
-  });
-  const api = new ApiClient();
-
-  const [fetching,changeFetching] = useState(false);
-
-  const refreshQuote = () => {
-    changeQuotes({
-      content: "Loading...",
-      author: "Loading...",
-      tags: [],
-
+    const [,lat, lon] = city[0]
+    apiClient.getWeather(lat, lon)
+    .then((res) => {
+      const response = res.data.daily.slice(0,5)
+      setWeatherData(response)
     })
-    changeFetching(true);
-
-    api
-    .getQuote()
-    
-      .then( (res) => {
-        changeQuotes(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-      .finally( (state) => changeFetching(false) );
-     
   }
 
   useEffect(() => {
-      refreshQuote();
-  }, []);
+    updateWeather()
+  }, [])
+
+  const submitHandler = (e, name) => {
+    e.preventDefault()
+    updateWeather(name)
+  }
 
   return (
-    <>
-      <h1>Quote of the Day</h1>
-      <p>
-        <b>Content:</b> {quotes.content}{" "}
-      </p>
-      <p>
-        <b>Author:</b> {quotes.author}{" "}
-      </p>
-      <p>
-        <b>Tags:</b> {quotes.tags.join(", ")}
-      </p>
-
-      <button disabled={fetching} onClick={() => refreshQuote()}>Get new Quote</button>
-    </>
+      <div className="app">
+        <main>
+        <div className="search-box">
+        <form onSubmit={(e) => submitHandler(e, query)}>
+          <input
+          type="text"
+          className="search-bar"
+          placeholder="Search..."
+          onChange={e => setQuery(e.target.value)}
+          value={query}
+          />
+        </form>
+        </div>
+        <Row className="card-group">
+          {weatherData.map(weather => 
+            <Col xs={2} key={weather.dt}>
+              <Views key={weather.dt} weather={weather} />
+            </Col>
+          )
+          }
+        </Row>
+        </main>
+      </div>
   );
 }
 
