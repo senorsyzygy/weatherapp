@@ -20,7 +20,7 @@ function App() {
   const updateWeather = (name = 'Sheffield') => {
     const city = cities.filter(([_name]) => _name == name)
     if (!city || !city.length) {
-      // cry for help
+      alert("City not found! Try again")
       return
     }
 
@@ -40,7 +40,7 @@ function App() {
     e.preventDefault()
     updateWeather(name)
   }
-
+  console.log(query)
   return (
       <div className="app">
         <main>
@@ -55,13 +55,21 @@ function App() {
           />
         </form>
         </div>
-        <Row className="card-group">
+        <Row className="header-row text-center">
+          <h1 className="header-title">Welcome to the weather app</h1>
+          <h3 className="header-text">You can search through a select few cities at the top, just press enter when you're ready to search!</h3>
+        </Row>
+        <Row className="card-group justify-content-center">
           {weatherData.map(weather => 
             <Col xs={2} key={weather.dt}>
               <Views key={weather.dt} weather={weather} />
             </Col>
           )
           }
+        </Row>
+        <Row className="footer-row text-center">
+          <h2 className="location-text">You have searched for...</h2>
+          <h1 className="location-search">{query}</h1>
         </Row>
         </main>
       </div>
