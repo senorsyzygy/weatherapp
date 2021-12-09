@@ -59,17 +59,17 @@ function App() {
           <h1 className="header-title">The Weather App</h1>
           <h3 className="header-text">The default location is Sheffield, but try type in a city name above then press enter to check out the weather there!</h3>
         </Row>
-        <Row className="card-group justify-content-center">
+        <Row className="footer-row text-center">
+          <h2 className="location-text">You have searched for...</h2>
+          <h1 className="location-search">{query}</h1>
+        </Row>
+        <Row xs={1} sm={2} className="card-group justify-content-center">
           {weatherData.map(weather => 
-            <Col xs={2} key={weather.dt}>
+            <Col md key={weather.dt}>
               <Views key={weather.dt} weather={weather} />
             </Col>
           )
           }
-        </Row>
-        <Row className="footer-row text-center">
-          <h2 className="location-text">You have searched for...</h2>
-          <h1 className="location-search">{query}</h1>
         </Row>
         </main>
       </div>

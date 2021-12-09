@@ -23,8 +23,8 @@ return(
         <Card.Text>Min Temp: {minTemp}°c</Card.Text>
         <Card.Text>Max Temp: {maxTemp}°c</Card.Text>
         <Card.Text>Wind Speed: {windSpeed}kph</Card.Text>
-        <Card.Text>Sunrise: {sunRise}:00</Card.Text>
-        <Card.Text>Sunset: {sunSet}:00</Card.Text>
+        <Card.Text>Sunrise: {sunRise} GMT</Card.Text>
+        <Card.Text>Sunset: {sunSet} GMT</Card.Text>
     </Card.Body>
 </Card>
 </>
