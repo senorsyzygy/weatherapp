@@ -56,8 +56,8 @@ function App() {
         </form>
         </div>
         <Row className="header-row text-center">
-          <h1 className="header-title">Welcome to the weather app</h1>
-          <h3 className="header-text">You can search through a select few cities at the top, just press enter when you're ready to search!</h3>
+          <h1 className="header-title">The Weather App</h1>
+          <h3 className="header-text">The default location is Sheffield, but try type in a city name above then press enter to check out the weather there!</h3>
         </Row>
         <Row className="card-group justify-content-center">
           {weatherData.map(weather => 
