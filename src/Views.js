@@ -38,9 +38,8 @@ return(
     <Card.Body class="texttext">
         <Card.Text>Day Temp: {dayTemp}°c</Card.Text>
         { show?
-        <><Card.Text>Min Temp: {minTemp}°c</Card.Text><Card.Text>Max Temp: {maxTemp}°c</Card.Text><Card.Text>Wind Speed: {windSpeed}kph</Card.Text><Card.Text>Sunrise: {sunRise} GMT</Card.Text><Card.Text>Sunset: {sunSet} GMT</Card.Text></> :null
+        <><Card.Text>Min Temp: {minTemp}°c</Card.Text><Card.Text>Max Temp: {maxTemp}°c</Card.Text><Card.Text>Wind Speed: {windSpeed}kph</Card.Text><Card.Text>Sunrise: {sunRise} GMT</Card.Text><Card.Text>Sunset: {sunSet} GMT</Card.Text> <a name={weather.dt} href={"#"+weather.dt} class="see-less-btn" onClick={() => setShow(!show)}>See less</a></> :<a name={weather.dt} href={"#"+weather.dt} class="see-more-btn" onClick={() => setShow(!show)}>See more</a>
         }
-        <a name={weather.dt} href={"#"+weather.dt} class="see-more-btn" onClick={() => setShow(!show)}>See more/less</a>
     </Card.Body>
 </Card>
 </>
