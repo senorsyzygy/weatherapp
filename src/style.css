@@ -7,7 +7,7 @@
 }
 
 .app{
-    background: url("./bgimage.avif");
+    background: url("./bgimage.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
