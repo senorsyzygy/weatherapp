@@ -54,11 +54,13 @@ main{
   }
   .header-title {
     font-family: "Poppins", sans-serif;
+    font-size: 35px;
   }
 
   .header-text {
     font-family: "Poppins", sans-serif;
     font-size: 18px;
+    height: 2vh;
   }
   .header-row{
     color: #fff;
@@ -79,10 +81,11 @@ main{
     font-style: normal;
     text-shadow: 3px 3px rgba(50,50,70,0.5);
   }
+  
   .location-text{
   
   color: #fff;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 200;
   font-style: italic;
   text-align: center;
@@ -101,3 +104,23 @@ main{
     /* font-family: "Poppins", sans-serif !important; */
     font-size: 18px;
   }
+
+.seeMore {
+  display: none;
+}
+
+.see-more-btn {
+  padding: 8px 15px;
+  margin-bottom: 2px;
+  border-radius: 5px;
+  background-color: rgba(53, 53, 53, 0.5);
+  color: #fff;
+  border: none;
+  outline:none;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.textext .show-more .seeMore {
+  display: inline;
+}
